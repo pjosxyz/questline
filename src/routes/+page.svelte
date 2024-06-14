@@ -3,7 +3,6 @@
 	import qlLogo from '../lib/images/home/ql-logo.svg';
 	import heroImage from '../lib/images/home/hero-illustration.svg';
 	import type { PageData } from './$types';
-	import ReviewCard from '../components/ReviewCard.svelte';
 	import Carousel from '../components/ui/Carousel.svelte';
 
 	export let data: PageData;
@@ -40,31 +39,32 @@
 		</div>
 	</header>
 
-	<section>
-		<h2 class="heading">Some Fake Reviews</h2>
-		<p class="subheading">See, lots of people are doing it! Which means you should too.</p>
-
-    
+	<section class="section-reviews">
+		<div class="section-heading">
+			<h2 class="heading">Some Fake Reviews</h2>
+			<p class="subheading">See, lots of people are doing it! Which means you should too.</p>
+		</div>
+		<Carousel reviews={data.cardData} />
 	</section>
-  <Carousel reviews={data.cardData} />
 </main>
 
 <style>
 	main {
-    max-width: var(--xl);
+		max-width: var(--xl);
 		margin: 0 auto;
 	}
-  
-  header, section {
-    padding: 0rem 2.4rem 0rem 2.4rem;
-  }
+
+	header,
+	section {
+		padding: 0rem 2.4rem 0rem 2.4rem;
+	}
 
 	nav {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		/* padding: 1.2rem 0rem 1.2rem 0rem; */
-    padding-top: 1.2rem;
+		padding-top: 1.2rem;
 
 		& img {
 			width: 16rem;
@@ -137,5 +137,15 @@
 		}
 	}
 
-  
+	.section-reviews {
+		& .section-heading {
+			& h2 {
+				margin: 0;
+			}
+			display: flex;
+			flex-direction: column;
+			gap: 2.4rem;
+			margin-bottom: 4rem;
+		}
+	}
 </style>

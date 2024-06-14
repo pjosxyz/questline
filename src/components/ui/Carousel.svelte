@@ -1,49 +1,77 @@
-<script>
-	import emblaCarouselSvelte from 'embla-carousel-svelte';
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import type { CardDataType } from '../../types';
 	import ReviewCard from '../ReviewCard.svelte';
+	import Swiper from 'swiper';
+	// import 'swiper/css';
+	export let reviews: CardDataType[];
+	let width: string;
+	let x: number | undefined;
 
-	export let reviews;
-
-	let emblaApi;
-	let options = { loop: false };
-
-	function onInit(event) {
-		emblaApi = event.detail;
-		console.log(emblaApi.slideNodes()); // Access API
+	function getDistanceFromLeftEdge() {
+		x = document.querySelector('.dirty')?.getBoundingClientRect().x;
 	}
+
+	onMount(() => {
+		const swiper = new Swiper('.swiper', {
+			slidesPerView: 'auto',
+			spaceBetween: 10,
+			loop: false,
+			centeredSlides: false
+		});
+
+		getDistanceFromLeftEdge();
+
+		window.addEventListener('resize', getDistanceFromLeftEdge);
+
+		return () => {
+			window.removeEventListener('resize', getDistanceFromLeftEdge);
+		};
+	});
 </script>
 
-<div class="embla" use:emblaCarouselSvelte={{ options }} on:emblainit={onInit}>
-	<div class="embla__container">
-		{#each reviews as review (review.id)}
-			<div class="embla__slide">
-				<ReviewCard {review} />
-			</div>
-		{/each}
+<!-- TODO: There has to be a better way.. -->
+<div class="dirty"></div>
+
+<div class="wrapper">
+	<!-- Slider main container -->
+	<div class="swiper" style="padding-left: {x}px;">
+		<!-- Additional required wrapper -->
+		<div class="swiper-wrapper">
+			<!-- Slides -->
+			<div class="swiper-slide"><ReviewCard bind:width review={reviews[0]} /></div>
+			<div class="swiper-slide"><ReviewCard bind:width review={reviews[1]} /></div>
+			<div class="swiper-slide"><ReviewCard bind:width review={reviews[2]} /></div>
+			<div class="swiper-slide"><ReviewCard bind:width review={reviews[3]} /></div>
+			<div class="swiper-slide"><ReviewCard bind:width review={reviews[4]} /></div>
+		</div>
 	</div>
 </div>
 
 <style>
-	.embla {
-		overflow: hidden;
+	.dirty {
+		height: 0px;
 	}
-	.embla__container {
-		display: grid;
-		grid-auto-flow: column;
-		grid-auto-columns: 370px; /* Each slide covers 80% of the viewport */
-    gap: 2.4rem;
-		/* gap: 2.4rem;
+	.wrapper {
 		width: 100vw;
-		position: relative;
-		left: 50%;
-		right: 50%;
-		margin-left: -50vw;
-		margin-right: -50vw;
-		border: 1px solid red; */
+		margin-left: calc((-100vw + 100%) / 2);
+		margin-right: calc((-100vw + 100%) / 2);
 	}
-	.embla__slide {
-		flex: 0 0 370px;
-		min-width: 0;
-		/* border: 1px solid red; */
+	.swiper {
+		overflow: hidden;
+		padding-left: 286px;
+		width: auto;
+		max-width: 100%;
+		@media (width < 500px) {
+			overflow: hidden;
+		}
+	}
+	.swiper-wrapper {
+		/* overflow: hidden; */
+		display: flex;
+	}
+	.swiper-slide {
+		display: flex;
+		justify-content: center;
 	}
 </style>

@@ -36,6 +36,7 @@
   },
   "type": "module",
   "dependencies": {
-    "embla-carousel-svelte": "^8.1.5"
+    "embla-carousel-svelte": "^8.1.5",
+    "swiper": "^11.1.4"
   }
 }

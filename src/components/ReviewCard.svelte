@@ -1,12 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { CardDataType } from '../types';
 
 	export let review: CardDataType;
+	export let width;
 
 	const stars = Array(review.starRating).fill('');
+
+	// onMount(() => {
+	// 	const article = document.querySelector("article")
+	// })
 </script>
 
-<article>
+<article bind:clientWidth={width}>
 	<header>
 		<div class="review-headline">
 			<h3>{review.gameTitle} Review</h3>
@@ -48,30 +54,34 @@
 		flex-direction: column;
 		width: 37rem;
     border: 2px solid var(--bg-2);
-		border-radius: 0.8rem;
+		border-radius: 3.2rem;
+		box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 
 		& header {
-			background-color: var(--bg-3);
 			border-bottom: 1px solid var(--gray-100);
 
 			& .review-headline {
-				height: 3.5rem;
+				height: 5.6rem;
 				display: flex;
 				align-items: center;
 				font-family: var(--font-inter);
-				font-size: 1.6rem;
-				color: white;
-				padding: 0rem 1.2rem 0rem 1.2rem;
-
+				padding: 0rem 1.6rem 0rem 1.6rem;
+				
 				& h3 {
+					font-size: 1.6rem;
+					color: var(--gray-300);
 					font-weight: 600;
+					align-self: flex-end;
 				}
 			}
 
 			& .review-image {
 				height: 20rem;
 				width: 100%;
+				padding: 1.6rem;
+				overflow: hidden;
 				& img {
+					border-radius: 6px;
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
@@ -88,11 +98,11 @@
 				display: flex;
 				align-items: center;
 				gap: 1.6rem;
-				padding: 1.6rem;
+				padding: 0rem 1.6rem 0rem 1.6rem;
 
 				& img {
-					width: 4.8rem;
-					height: 4.8rem;
+					width: 3.2rem;
+					height: 3.2rem;
 					object-fit: cover;
 					border-radius: 50%;
 				}
