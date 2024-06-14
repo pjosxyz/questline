@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+
+/*
+https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+#root,
+#__next {
+	isolation: isolate;
+}
+
+:root,
+html {
+	font-size: 62.5%;
+}
+
+:root {
+	/* colors */
+	--indigo-1: hsl(243 68% 66%);
+	--indigo-2: hsl(243, 42%, 55%);
+	--red: hsl(10 78% 54%);
+	--green: hsl(151 40% 54%);
+	--black: hsl(0 0% 9%);
+	--gray-100: hsl(0 0% 99%);
+	--gray-200: hsl(0 0% 92%);
+	--gray-300: hsl(0 0% 52%);
+	/* layout */
+	--xl: 1120px;
+	/* typography */
+	--font-tight: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif;
+
+	--font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+		Arial, sans-serif;
+
+	--headline-font: var(--font-tight);
+	--headline-size-desktop: 4.8rem;
+  --headline-color: var(--black);
+
+	--subheadline-font: var(--font-inter);
+	--subheadline-size-desktop: 2.4rem;
+	--subheadline-color: var(--gray-300);
+  
+	--heading-font: var(--font-tight);
+	--heading-size-desktop: 3.2rem;
+	--heading-color: var(--black);
+
+  --subheading-font: var(--font-inter);
+  --subheading-size-desktop: 2rem;
+  --subheading-color: var(--gray-300);
+  
+	/* tokens */
+	--bg-1: var(--gray-100);
+	--bg-2: var(--gray-200);
+  --bg-3: var(--black);
+}
+
+body {
+	background-color: var(--bg-1);
+}
+
+#headline {
+	--font-size: var(
+		--headline-size-desktop
+	); /* bcos when I change with media query subsequent size calcs will adjust automatically (I think) */
+	font-family: var(--headline-font);
+	font-size: var(--font-size);
+	line-height: calc(var(--font-size) + 0.2rem);
+  color: var(--headline-color)
+}
+
+#subheadline {
+  --font-size: var(--subheadline-size-desktop);
+  font-family: var(--subheadline-font);
+  font-size: var(--font-size);
+	line-height: calc(var(--font-size) + 0.2rem);
+	color: var(--subheadline-color);
+}
+
+.heading {
+  --font-size: var(--heading-size-desktop);
+  font-family: var(--heading-font);
+	font-size: var(--font-size);
+	line-height: calc(var(--font-size) + 0.2rem);
+	color: var(--heading-color);
+  margin-bottom: 2rem;
+}
+
+.subheading {
+  --font-size: var(--subheading-size-desktop);
+  font-family: var(--subheading-font);
+  font-size: var(--font-size);
+  line-height: calc(var(--font-size) + 0.2rem);
+  color: var(--subheading-color);
+}
