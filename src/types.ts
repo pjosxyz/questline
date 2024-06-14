@@ -4,6 +4,7 @@ export type CardDataType = {
 	id: number | string;
 	gameTitle: string;
 	imageUrl: string;
+	altText: string;
 	username: string;
 	userAvatar: string;
 	reviewHeadline: string;

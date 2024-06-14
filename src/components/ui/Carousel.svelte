@@ -31,13 +31,13 @@
 </script>
 
 <!-- TODO: There has to be a better way.. -->
-<div class="dirty"></div>
+<div class="h-0 dirty"></div>
 
 <div class="wrapper">
 	<!-- Slider main container -->
-	<div class="swiper" style="padding-left: {x}px;">
+	<div class="swiper overflow-hidden w-auto max-w-full" style="padding-left: {x}px;">
 		<!-- Additional required wrapper -->
-		<div class="swiper-wrapper">
+		<div class="swiper-wrapper flex py-4 lg:gap-3">
 			<!-- Slides -->
 			<div class="swiper-slide"><ReviewCard bind:width review={reviews[0]} /></div>
 			<div class="swiper-slide"><ReviewCard bind:width review={reviews[1]} /></div>
@@ -49,15 +49,12 @@
 </div>
 
 <style>
-	.dirty {
-		height: 0px;
-	}
 	.wrapper {
 		width: 100vw;
 		margin-left: calc((-100vw + 100%) / 2);
 		margin-right: calc((-100vw + 100%) / 2);
 	}
-	.swiper {
+	/* .swiper {
 		overflow: hidden;
 		padding-left: 286px;
 		width: auto;
@@ -65,13 +62,9 @@
 		@media (width < 500px) {
 			overflow: hidden;
 		}
-	}
-	.swiper-wrapper {
-		/* overflow: hidden; */
-		display: flex;
-	}
-	.swiper-slide {
+	} */
+	/* .swiper-slide {
 		display: flex;
 		justify-content: center;
-	}
+	} */
 </style>

@@ -3,42 +3,15 @@
 </script>
 
 {#if kind === 'rg'}
-	<button class="rg">
+	<button
+		class="font-tight text-lg text-white min-h-12 font-semibold bg-indigo-500 rounded-full px-4 py-2 lg:px-12 lg:py-6"
+	>
 		<slot></slot>
 	</button>
-  {:else if kind === 'ghost'}
-  <button class="ghost">
+{:else if kind === 'ghost'}
+	<button
+		class="text-base font-tight text-neutral-900 font-semibold px-4 py-2 lg:px-8 lg:py-4 transition-colors rounded-full bg-neutral-200 lg:bg-none min-h-12 lg:hover:bg-neutral-200"
+	>
 		<slot></slot>
 	</button>
 {/if}
-
-<style>
-	button {
-		appearance: none;
-		border: none;
-		font-family: 'Inter-Tight', sans-serif;
-		font-weight: 600;
-		min-height: 4.8rem;
-		font-size: 1.8rem;
-		padding: 1.2rem 2.4rem 1.2rem 2.4rem;
-    background-color: none;
-    background: none;
-    cursor: pointer;
-    transition: background-color .2s ease-in-out;
-    border-radius: 999rem;
-	}
-
-  .rg {
-    color: white;
-    background-color: var(--indigo-1);
-    &:hover {
-      background-color: var(--indigo-2);
-    }
-  }
-
-  .ghost {
-    &:hover {
-      background-color: var(--bg-2);
-    }
-  }
-</style>
