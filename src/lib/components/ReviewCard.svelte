@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { CardDataType } from '../types';
+	import type { CardDataType } from '$lib/types';
 
 	export let review: CardDataType;
 	export let width;

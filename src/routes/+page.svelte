@@ -1,35 +1,51 @@
 <script lang="ts">
-	import Button from '../components/ui/Button.svelte';
-	import qlLogo from '../lib/images/home/ql-logo.svg';
-	import heroImage from '../lib/images/home/hero-illustration.svg';
-	import heart from '../lib/images/home/heart.svg'
+	import Button from '$lib/components/ui/Button.svelte';
+	import qlLogo from '$lib/images/home/ql-logo.svg';
+	import heroImage from '$lib/images/home/hero-illustration.svg';
+	import heart from '$lib/images/home/heart.svg';
 
 	import type { PageData } from './$types';
-	import Carousel from '../components/ui/Carousel.svelte';
+	import Carousel from '$lib/components/ui/Carousel.svelte';
 
 	export let data: PageData;
 </script>
 
-<main class="max-w-6xl mx-auto p-6">
+<main class="mx-auto max-w-6xl p-6">
 	<header class="mb-20">
-		<nav class="flex items-center justify-between mb-14">
+		<nav class="mb-14 flex items-center justify-between">
 			<img src={qlLogo} alt="questline logo" class="w-40" />
 			<div class="flex gap-2 lg:gap-0">
-				<Button kind="ghost">Sign up</Button>
-				<Button kind="ghost">Log in</Button>
+				<Button kind="ghost">Get started</Button>
+				<button class="btn" onclick="my_modal_1.showModal()">open modal</button>
+<dialog id="my_modal_1" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 			</div>
 		</nav>
 
-		<div class="flex flex-col-reverse gap-5 lg:flex-row items-center">
+		<div class="flex flex-col-reverse items-center gap-5 lg:flex-row">
 			<div class="flex flex-col gap-5">
-				<h1 class="font-tight font-semibold text-5xl text-center">
-					Review and rate the games you <span class="relative inline-flex before:top-0 before:absolute before:content-[url('../lib/images/home/heart.svg')]">love</span> (and
+				<h1 class="text-center font-tight text-5xl font-semibold text-neutral-900">
+					Review and rate the games you <span
+						class="relative inline-flex before:absolute before:top-0 before:content-[url('../lib/images/home/heart.svg')]"
+						>love</span
+					>
+					(and
 					<span class="hate">hate</span>)
 				</h1>
-				<p class="text-xl text-neutral-600 text-center">
+				<p class="text-center text-xl text-neutral-600">
 					Sometimes it’s important to get it off your chest and share your thoughts.
 				</p>
-				<Button kind="rg">Get started!</Button>
+				<button class="btn btn-primary text-white">Get started!</button>
 			</div>
 			<div class="flex grow">
 				<img
@@ -43,18 +59,17 @@
 
 	<section>
 		<div class="flex flex-col gap-4">
-			<h2 class="font-tight font-semibold text-4xl">Reviews Like These</h2>
-			<p class="font-sans text-lg text">See, lots of people are doing it! Which means you should too.</p>
+			<h2 class="font-tight text-4xl font-semibold text-neutral-900">Reviews Like These</h2>
+			<p class="text font-sans text-lg">
+				See, lots of people are doing it! Which means you should too.
+			</p>
 		</div>
+
 		<Carousel reviews={data.cardData} />
 	</section>
 </main>
 
 <style>
-
-
-
-
 	.hero {
 		display: flex;
 		align-items: center;
