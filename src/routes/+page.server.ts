@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import type { CardDataType } from '../lib/types';
+import type { CardDataType } from '$lib/types';
 
 const DUMMY_DATA: CardDataType[] = [
 	{
